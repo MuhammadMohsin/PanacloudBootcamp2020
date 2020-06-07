@@ -1,3 +1,7 @@
+## Session Material
+
+https://docs.google.com/presentation/d/1D44MyYxJls_-voXOCGKwYr6rCGdE1yYfzeXh5K33mfM/edit#slide=id.p
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
