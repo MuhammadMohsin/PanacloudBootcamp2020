@@ -2,6 +2,8 @@ import React from 'react';
 import NavBar from './NavBar'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, TextField, Button, CircularProgress } from '@material-ui/core';
+import BarChart from './barChart';
+import PieChart from './pieChart';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <NavBar />
+      {/* <NavBar />
       <Paper elevation={3} className={classes.paper}>
         <h1>Login</h1>
 
@@ -38,7 +40,10 @@ function App() {
         </form>
 
         <CircularProgress value={50} />
-      </Paper>
+      </Paper> */}
+
+      <BarChart />
+      <PieChart />
     </div>
   );
 }
