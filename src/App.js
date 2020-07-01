@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
+import NavBar from './Components/NavBar'
+import InfoPanel from './Components/InfoPanel';
 
 function App() {
 
   return (
 	<div>
-		<h1>Hello World</h1>
+		<NavBar />
+		<InfoPanel />
 	</div>
   );
 }
