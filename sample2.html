@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var elem = document.querySelector('#box');
+
+        elem.animate([
+            { transform: 'translate(0, 0)', background: 'darkcyan' },
+            { transform: 'translate(400px, 0)' , background: 'red'},
+            { transform: 'translate(400px, 400px)' , background: 'blue'},
+            { transform: 'translate(0, 400px)' , background: 'red'},
+            { transform: 'translate(0, 0)', background: 'darkcyan' },
+
+        ], {
+            duration: 4000,
+            iterations: Infinity
+        })
+
+    </script>
+
+</body>
+
+</html>

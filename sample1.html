@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var elem = document.querySelector('#box');
+
+        elem.animate([
+            { transform: 'translate(0, 0)' },
+            { transform: 'translate(600px, 0)' },
+            { transform: 'translate(0, 0)' },
+        ], {
+            duration: 1500,
+            iterations: Infinity
+        })
+
+    </script>
+
+</body>
+
+</html>
