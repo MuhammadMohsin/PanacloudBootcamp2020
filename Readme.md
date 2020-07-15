@@ -1,1 +1,5 @@
-This is only for bootcamp classes
+## Local Installation
+
+###### Run Commands:
+- npm install
+- tsc
