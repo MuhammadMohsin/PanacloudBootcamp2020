@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getQuizDetails } from './services/quiz_service';
-import { QuestionType } from './Types/quiz_types';
+import { QuizType } from './Types/quiz_types';
 import QuestionCard from './Components/QuestionCard';
 
 function App() {
 
-  let [quiz, setQuiz] = useState<QuestionType[]>([])
+  let [quiz, setQuiz] = useState<QuizType[]>([])
   let [currentStep, setCurrentStep] = useState(0)
 
 
   useEffect(() => {
     async function fetchData() {
-      const questions: QuestionType[] = await getQuizDetails(5, 'easy');
+      const questions: QuizType[] = await getQuizDetails(5, 'easy');
       setQuiz(questions)
     }
     fetchData();
@@ -23,7 +23,7 @@ function App() {
     if (currentStep !== quiz.length - 1)
       setCurrentStep(++currentStep);
     else {
-      alert("Quiz Completed");
+      alert("QuestionType Completed");
       setCurrentStep(0);
     }
   }

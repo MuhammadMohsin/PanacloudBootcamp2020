@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type Quiz = {
+export type QuestionType = {
     category: string
     correct_answer: string
     difficulty: string
@@ -9,7 +9,7 @@ export type Quiz = {
     type: string
 }
 
-export type QuestionType = {
+export type QuizType = {
     question: string
     answer: string
     option: string[]
