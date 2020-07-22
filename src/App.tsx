@@ -9,6 +9,7 @@ function App() {
   let [quiz, setQuiz] = useState<QuizType[]>([])
   let [currentStep, setCurrentStep] = useState(0)
   let [score, setScore] = useState(0)
+  let [showResult, setShowResult] = useState(false)
 
 
   useEffect(() => {
@@ -33,17 +34,26 @@ function App() {
     if (currentStep !== quiz.length - 1)
       setCurrentStep(++currentStep);
     else {
-      alert("You final score is: " + score + "out of: " + quiz.length);
-      setCurrentStep(0);
-      setScore(0);
+      setShowResult(true);
     }
   }
 
   if (!quiz.length)
     return <h3>Loading.. </h3>
 
+  if(showResult){
+    return (<div className="question-container result-container">
+      <h2>Result</h2>
+
+      <p className="result-text">
+        You final score is 
+          <b> {score}</b> out of <b>{quiz.length}</b>
+      </p>
+    </div>)
+  }
   return (
     <div className="App">
+      <h1>Quiz App</h1>
       <QuestionCard
         options={quiz[currentStep].option}
         question={quiz[currentStep].question}

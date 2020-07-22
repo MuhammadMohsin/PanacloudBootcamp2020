@@ -1,0 +1,30 @@
+.App{
+    text-align: center;
+}
+.App > h1{
+    text-shadow: 4px 2px 5px #917373;
+}
+.question-container {
+    text-align: left;
+    max-width: 500px;
+    box-shadow: 0px 5px 24px #867a7a;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.question-form .submit{
+    width: 100%;
+    border: none;
+    background-color: #1c1c4c;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 7px;
+    margin-top: 20px;
+}
+.question-container .radio{
+    display: block;
+    margin: 9px 0;
+}
+.question-container.result-container{
+    text-align: center;
+}

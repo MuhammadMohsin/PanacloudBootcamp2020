@@ -15,12 +15,14 @@ const QuestionCard: React.FC<questionPropsType> = ({ question, options, callback
                 <h4>{question}</h4>
             </div>
 
-            <form onSubmit={(e: React.FormEvent<EventTarget>) => callback(e, selectedAns)}>
+            <form onSubmit={(e: React.FormEvent<EventTarget>) => callback(e, selectedAns)}
+                className="question-form"
+                >
                 {
                     options.map((opt: string, ind: number) => {
                         return (
                             <div key={ind}>
-                                <label>
+                                <label className="radio">
                                     <input
                                         type="radio"
                                         name="opt"
@@ -35,7 +37,7 @@ const QuestionCard: React.FC<questionPropsType> = ({ question, options, callback
                         )
                     })
                 }
-                <input type="submit" />
+                <input type="submit" className="submit"/>
             </form>
         </div>
     )
