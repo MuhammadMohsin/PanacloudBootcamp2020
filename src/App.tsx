@@ -8,6 +8,7 @@ function App() {
 
   let [quiz, setQuiz] = useState<QuizType[]>([])
   let [currentStep, setCurrentStep] = useState(0)
+  let [score, setScore] = useState(0)
 
 
   useEffect(() => {
@@ -18,13 +19,23 @@ function App() {
     fetchData();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+  const handleSubmit = (e: React.FormEvent<EventTarget>, userAns: string) => {
     e.preventDefault();
+
+    const currentQuestion: QuizType = quiz[currentStep];
+
+    console.log("correct And: " + currentQuestion.correct_answer + "--user Selection:" + userAns)
+
+    if (userAns === currentQuestion.correct_answer) {
+      setScore(++score);
+    }
+
     if (currentStep !== quiz.length - 1)
       setCurrentStep(++currentStep);
     else {
-      alert("QuestionType Completed");
+      alert("You final score is: " + score + "out of: " + quiz.length);
       setCurrentStep(0);
+      setScore(0);
     }
   }
 
