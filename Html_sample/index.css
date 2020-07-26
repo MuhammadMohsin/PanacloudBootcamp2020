@@ -1,0 +1,19 @@
+.clouds {
+  display: flex;
+  justify-content: space-around;
+}
+
+body {
+  background-color: rgb(237, 247, 250);
+}
+
+.plane-div {
+  z-index: 999;
+}
+
+.runway {
+  height: 150px;
+  background: black;
+  position: relative;
+  top: 570px;
+}
