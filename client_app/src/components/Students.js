@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, useMutation } from '@apollo/client';
 
 const GET_STUDENTS = gql`
   query GetAllStudents {
@@ -12,8 +12,21 @@ const GET_STUDENTS = gql`
   }
 `;
 
+const ADD_STUDENT = gql`
+
+  mutation AddStudent($id: Int!, $email: String!, $age: Int!, $name: String!) {
+    addStudent(
+        input: {id: $id, name: $name, email: $email, age: $age}
+    ) {
+      id
+      name
+    }
+  }
+`;
+
 function Students() {
     const { loading, error, data } = useQuery(GET_STUDENTS);
+    const [addStd] = useMutation(ADD_STUDENT);
 
     if (loading)
         return <h1>Loading ...</h1>
@@ -36,8 +49,8 @@ function Students() {
                 </thead>
                 <tbody>
                     {
-                        students.map(std => {
-                            return (<tr key={std.id}>
+                        students.map((std, ind) => {
+                            return (<tr key={ind}>
                                 <td>{std.name}</td>
                                 <td>{std.age}</td>
                                 <td>{std.email}</td>
@@ -46,6 +59,17 @@ function Students() {
                     }
                 </tbody>
             </table>
+
+            <button onClick={() =>
+                addStd({
+                    variables: {
+                        id: 15, email: "temp2@gmail", age: 23, name: "Student 1"
+                    },
+                    refetchQueries: [{ query: GET_STUDENTS }]
+
+                })
+            }>
+                Add Student</button>
         </div>
     );
 }
