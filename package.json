@@ -16,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "typescript": "~3.7.2",
-    "yup": "^0.29.3"
+    "yup": "^0.29.3",
+    "@types/yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
