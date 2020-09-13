@@ -1,0 +1,13 @@
+.btn-inc {
+    padding: 10px 25px;
+    color: #ffffff;
+    font-size: 18px;
+    background-color: #242742;
+}
+
+.btn-dec {
+    padding: 10px 25px;
+    color: #ffffff;
+    font-size: 18px;
+    background-color: #f51414;
+}
