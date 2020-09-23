@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from "../component/layout";
 
-export default function Home() {
+export default function About() {
     return <Layout>
-        <h1>Hello World</h1>
+        <h1>This is About page</h1>
     </Layout>
 }
