@@ -15,7 +15,10 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.1",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.24.63",
+    "gatsby-source-contentful": "^2.3.48",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
