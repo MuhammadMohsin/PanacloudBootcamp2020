@@ -1,5 +1,24 @@
-import React from 'react';
+import React from "react"
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
 
-export default function Home () {
-    return <h1>Hello World</h1>
+// This query is executed at run time by Apollo.
+const APOLLO_QUERY = gql`
+{
+    todos {
+        task,
+        id
+    }
+}
+`;
+
+export default function Home() {
+  const { loading, error, data } = useQuery(APOLLO_QUERY);
+
+  return (
+      <div>
+          {JSON.stringify(data)}
+      </div>
+  );
+    
 }
