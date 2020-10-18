@@ -7,7 +7,8 @@ const GET_TODOS = gql`
 {
     todos {
         task,
-        id
+        id,
+        status
     }
 }
 `;
@@ -36,14 +37,11 @@ export default function Home() {
 
     const { loading, error, data } = useQuery(GET_TODOS);
 
-    // useEffect(() => {
-    //     if (data && data.todos) {
-    //         setTodos(data.todos);
-    //     }
-    // }, [])
-
     if (loading)
         return <h2>Loading..</h2>
+
+    if (error)
+        return <h2>Error</h2>
 
     return (
         <div>
