@@ -1,0 +1,15 @@
+.container {
+    width: 80%;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.card-container > .card{
+    display: inline-block;
+    box-shadow: 0 0 10px black;
+    display: inline-block;
+    height: 100px;
+    width: 300px;
+    padding: 20px;
+    margin: 10px;
+}
