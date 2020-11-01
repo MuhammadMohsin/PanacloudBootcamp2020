@@ -43,10 +43,12 @@ export default function Home() {
         {
             data.allStripePrice.edges.map(({ node }) => {
                 return <div key={node.id}>
-                    <p>{node.product.name}</p>
-                    <p>{node.product.description}</p>
-                    <img href={node.product.images[0]} height="200" />
+                    <p><b>{node.product.name}</b></p>
+                    <p><i>{node.product.description}</i></p>
+                    <img src={node.product.images[0]} height="100" />
+                    <br/>
                     <button onClick={(e) => redirectToCheckout(e, node.id)}>Buy {node.product.name}</button>
+                    < hr /> 
                 </div>
             })
         }
