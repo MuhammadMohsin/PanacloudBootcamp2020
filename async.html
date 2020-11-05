@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sample</title>
+</head>
+
+<body>
+    <script>
+        async function fun1() {
+            return new Promise((resolve, reject) => {
+                setTimeout(function () {
+                    resolve("Resolved function 1");
+                }, 1000);
+            });
+        }
+
+        async function fun2() {
+            return new Promise((resolve, reject) => {
+                setTimeout(function () {
+                    reject("Resolved function 2");
+                }, 1000);
+            });
+        }
+
+        async function main_default() {
+            console.time();
+
+            try {
+                let a = await fun1()
+                let b = await fun2()
+
+                console.log(a + " by default")
+                console.log(b + " by default")
+            }
+            catch (err) {
+                console.warn("error occured");
+                console.log(err);
+            }
+            console.timeEnd();  // log 4000.xx ms
+        }
+
+        /****Suitable for independent calls****/
+        async function main_parallel() {
+            console.time();
+
+            try {
+                let a = fun1()
+                let b = fun2()
+
+                a = await a
+                b = await b
+
+                console.log(a + " by parallel")
+                console.log(b + " by parallel")
+            }
+            catch (err) {
+                console.warn("error occured");
+                console.log(err);
+            }
+            console.timeEnd();  // log 2000.xx ms
+        }
+
+
+        main_default();
+        main_parallel();
+        
+    </script>
+</body>
+
+</html>
