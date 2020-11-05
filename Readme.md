@@ -1,1 +1,3 @@
-This is only for bootcamp classes
+# What is GraphQL?
+
+[Class Video](https://youtu.be/sP2Amlw44fk)
