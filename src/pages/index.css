@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+}
+.card{
+    width: 300px;
+    box-shadow: 0 0 6px black;
+    text-align: center;
+    padding: 10px 5px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.header-container{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+button {
+    padding: 5px 13px;
+    border-radius: 5px;
+    background-color: #8989d6;
+}
