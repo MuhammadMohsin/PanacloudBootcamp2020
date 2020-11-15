@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+
+ul > li{
+    display: inline-block;
+    box-shadow: 0 0 10px black;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+}
+ul > li:hover{
+    background-color: #efefef;
+}
+
+ul > li > a{
+    color: black !important;
+    text-decoration: none;
+}
+ul > li > a > h3 {
+    border-bottom: 1px solid #aba6a6;
+    padding-bottom: 5px;
+}
+
+.product-details-container{
+    box-shadow: 0 0 10px black;
+    padding: 15px;
+}
+.product-details-container > a{
+    text-decoration: none;
+    font-weight: 700;
+}
