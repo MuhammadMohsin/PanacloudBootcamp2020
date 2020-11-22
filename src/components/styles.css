@@ -1,0 +1,12 @@
+.nav-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 70px;
+    background-color: black;
+    color: white;
+}
+.children {
+    margin-top: 85px;
+}
