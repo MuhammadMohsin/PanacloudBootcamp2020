@@ -1,34 +1,49 @@
 import { Link } from 'gatsby';
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout';
-import Client from 'shopify-buy';
+import { gql, useMutation } from '@apollo/client';
 
-const client = Client.buildClient({
-    domain: "mohsinstoretest.myshopify.com",
-    storefrontAccessToken: "aeddad8c96dd3d914e4dc93aa27d89db"
-});
+const ADD_ITEM_MUTATION = gql`
+mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
+    checkoutLineItemsAdd(lineItems: $lineItems, checkoutId: $checkoutId) {
+      checkout {
+        id
+        webUrl
+        totalPrice
+        lineItems(first:100){
+          edges{
+            node{
+              quantity
+              id
+              title,
+              variant{
+                id
+                priceV2{
+                  amount
+                }
+              }
+            }
+          }
+        }
+      }
+      checkoutUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`
 
 function Product({ pageContext }) {
 
-    const [session, setSession] = useState({})
+    const [session, setSession] = useState({});
+    const [addItem, data] = useMutation(ADD_ITEM_MUTATION);
+
     useEffect(() => {
         const token = localStorage.getItem('session')
-        if (!token) {
-            (async () => {
-                const checkoutToken = await client.checkout.create();
-                setSession(checkoutToken);
-                console.log(checkoutToken);
-            })()
-        }
-        else {
-            (async () => {
-                const token = await client.checkout.fetch(
-                    localStorage.getItem("session")
-                )
-                setSession(token);
-                console.log(token);
-                console.log(token.lineItems);
-            })()
+        if (token) {
+            setSession(JSON.parse(localStorage.getItem("session")));
         }
     }, []);
 
@@ -41,13 +56,22 @@ function Product({ pageContext }) {
                 <p>{pageContext.description}</p>
                 <br /> <br />
                 <button onClick={async () => {
-                    const newSession = await client.checkout.addLineItems(session.id, [{
-                        variantId: pageContext.variants[0].id.split("_").pop(),
-                        quantity: 1,
-                    }]);
-                    console.log(newSession);
-                    setSession(newSession);
-                    localStorage.setItem("session", session.id);
+                    const res = await addItem({
+                        variables: {
+                            "lineItems": [
+                                {
+                                    "quantity": 1,
+                                    "variantId": pageContext.variants[0].id.split("_").pop()
+                                }
+                            ],
+                            "checkoutId": session.id
+                        }
+                    });
+
+
+                    // console.log(res.data.checkoutLineItemsAdd.checkout);
+                    // setSession(newSession);
+                    localStorage.setItem("session", JSON.stringify(res.data.checkoutLineItemsAdd.checkout));
                 }}>Add to cart</button>
             </div>
         </Layout>

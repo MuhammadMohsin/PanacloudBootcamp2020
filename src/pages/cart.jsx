@@ -10,24 +10,21 @@ function Cart() {
 
     const [session, setSession] = useState({})
     useEffect(() => {
-        (async () => {
-            const token = await client.checkout.fetch(
-                localStorage.getItem("session")
-            )
-            setSession(token);
-            console.log(token);
-            console.log(token.lineItems);
-        })()
+        const token = localStorage.getItem('session')
+        if (token) {
+            console.log(JSON.parse(localStorage.getItem("session")));
+            setSession(JSON.parse(localStorage.getItem("session")));
+        }
     }, []);
 
 
     if(session && session.lineItems){
         return (
         <Layout>
-            {session.lineItems.map(item => <div>
-                {console.log(item)}
-                <h1>{item.title}</h1>
-                <img src={item.variant.image.src} alt="product-img" />
+            {session.lineItems.edges.map(({node}) => <div>
+                {console.log(node)}
+                <h4>{node.title}</h4>
+                {/* <img src={node.variant.image.src} alt="product-img" /> */}
                 <br /> <br />
                 <button >Checkout</button>
             </div>)}
