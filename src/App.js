@@ -22,13 +22,13 @@ function App() {
     //     console.log(json);
     //     setData(json);
     //   })
-  },[])
+  },[repos])
 
   return (
     <div className="App">
       <h1>You are seeing all repositories</h1>
       <ul>
-        {repos.map((repoObj, ind) => {
+        {repos && repos.map((repoObj, ind) => {
           return (<li key={ind}>{repoObj.name}</li>)
         })}
       </ul>
